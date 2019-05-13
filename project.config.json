@@ -9,7 +9,7 @@
 	},
 	"miniprogramRoot": "dist/wx/",
 	"compileType": "miniprogram",
-	"appid": "touristappid",
+	"appid": "wx5d3ac051c6e80d56",
 	"projectname": "life-map-wmp",
 	"condition": {
 		"search": {

@@ -10,27 +10,30 @@ export default {
      * 支付宝(蚂蚁)：mpvue === my, mpvuePlatform === 'my'
      */
 
-    let logs
+    let logs;
     if (mpvuePlatform === 'my') {
-      logs = mpvue.getStorageSync({key: 'logs'}).data || []
-      logs.unshift(Date.now())
+      logs = mpvue.getStorageSync({key: 'logs'}).data || [];
+      logs.unshift(Date.now());
       mpvue.setStorageSync({
         key: 'logs',
         data: logs
-      })
+      });
     } else {
-      logs = mpvue.getStorageSync('logs') || []
-      logs.unshift(Date.now())
-      mpvue.setStorageSync('logs', logs)
+      logs = mpvue.getStorageSync('logs') || [];
+      logs.unshift(Date.now());
+      mpvue.setStorageSync('logs', logs);
     }
   },
   log () {
-    console.log(`log at:${Date.now()}`)
+    console.log(`log at:${Date.now()}`);
   }
-}
+};
 </script>
 
 <style>
+@import "./colorui/main.css";
+@import "./colorui/icon.css";
+
 .container {
   height: 100%;
   display: flex;

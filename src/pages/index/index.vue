@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import card from '@/components/card'
+import card from '@/components/card';
 
 export default {
   data () {
@@ -44,7 +44,7 @@ export default {
         nickName: 'mpvue',
         avatarUrl: 'http://mpvue.com/assets/logo.png'
       }
-    }
+    };
   },
 
   components: {
@@ -53,15 +53,15 @@ export default {
 
   methods: {
     bindViewTap () {
-      const url = '../logs/main'
+      const url = '../logs/main';
       if (mpvuePlatform === 'wx') {
-        mpvue.switchTab({ url })
+        mpvue.switchTab({ url });
       } else {
-        mpvue.navigateTo({ url })
+        mpvue.navigateTo({ url });
       }
     },
     clickHandle (ev) {
-      console.log('clickHandle:', ev)
+      console.log('clickHandle:', ev);
       // throw {message: 'custom test'}
     }
   },
@@ -69,7 +69,7 @@ export default {
   created () {
     // let app = getApp()
   }
-}
+};
 </script>
 
 <style scoped>
