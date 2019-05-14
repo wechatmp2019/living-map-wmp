@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "Home",
+    "usingComponents": {
+        "i-button": "/static/iview/button/index",
+        "i-icon": "/static/iview/icon/index"
+    }
+}

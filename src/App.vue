@@ -31,8 +31,6 @@ export default {
 </script>
 
 <style>
-@import "./colorui/main.css";
-@import "./colorui/icon.css";
 
 .container {
   height: 100%;
