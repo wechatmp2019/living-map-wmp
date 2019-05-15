@@ -1,5 +1,10 @@
 <script>
 export default {
+  data () {
+    return {
+      global: {}
+    };
+  },
   created () {
     // 调用API从本地缓存中获取数据
     /*
@@ -24,6 +29,19 @@ export default {
       mpvue.setStorageSync('logs', logs);
     }
   },
+
+  mounted () {
+    // 自定义导航栏
+    // wx.getSystemInfo({
+    //   success: e => {
+    //     this.global.StatusBar = e.statusBarHeight;
+    //     let custom = wx.getMenuButtonBoundingClientRect();
+    //     this.global.Custom = custom;
+    //     this.global.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
+    //   }
+    // });
+  },
+
   log () {
     console.log(`log at:${Date.now()}`);
   }
@@ -31,6 +49,8 @@ export default {
 </script>
 
 <style>
+@import "../static/colorui/main.wxss";
+@import "../static/colorui/icon.wxss";
 
 .container {
   height: 100%;
