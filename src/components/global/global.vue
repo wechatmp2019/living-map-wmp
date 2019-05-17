@@ -1,6 +1,6 @@
 <script>
 const userInfo = {};
 export default {
-  userInfo
+    userInfo
 };
 </script>
