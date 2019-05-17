@@ -14,7 +14,7 @@
 
       <i-drawer mode="left" :visible="showMine" @close="toggleMine">
         <div class="mine-container">
-            单击遮罩层关闭
+            <aside-menu></aside-menu>
         </div>
       </i-drawer>
     </i-row>
@@ -31,36 +31,40 @@
 
 <script lang="js">
 import HomeCard from '@/components/card/HomeCard';
+import AsideMenu from '@/components/asideMenu/AsideMenu';
 
 export default {
-  data () {
-    return {
-      currentMark: '一米校园',
-      showMine: false
-    };
-  },
-
-  components: {
-    HomeCard
-  },
-
-  methods: {
-    toggleMine () {
-      this.showMine = !this.showMine;
+    data () {
+        return {
+            currentMark: '一米校园',
+            showMine: false
+        };
     },
-    bindViewTap () {
-      const url = '../logs/main';
-      if (mpvuePlatform === 'wx') {
-        mpvue.switchTab({ url });
-      } else {
-        mpvue.navigateTo({ url });
-      }
-    }
-  },
 
-  created () {
+    components: {
+        HomeCard,
+        AsideMenu
+    },
+
+    methods: {
+        toggleMine () {
+            this.showMine = !this.showMine;
+        },
+        bindViewTap () {
+            const url = '../logs/main';
+            if (mpvuePlatform === 'wx') {
+                mpvue.switchTab({ url });
+            } else {
+                mpvue.navigateTo({ url });
+            }
+        }
+    },
+
+    created () {
     // let app = getApp();
-  }
+    },
+    onLoad () {
+    }
 };
 </script>
 
