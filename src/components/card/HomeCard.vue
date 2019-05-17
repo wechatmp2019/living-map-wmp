@@ -15,30 +15,30 @@
 
 <script>
 export default {
-  name: 'home-card',
-  props: {
-    full: {
-      type: Boolean,
-      default: false
+    name: 'home-card',
+    props: {
+        full: {
+            type: Boolean,
+            default: false
+        },
+        thumb: {
+            type: String,
+            default: ''
+        },
+        title: {
+            type: String,
+            default: ''
+        },
+        extra: {
+            type: String,
+            default: ''
+        }
     },
-    thumb: {
-      type: String,
-      default: ''
+    computed: {
     },
-    title: {
-      type: String,
-      default: ''
-    },
-    extra: {
-      type: String,
-      default: ''
-    }
-  },
-  computed: {
-  },
-  methods: {
+    methods: {
 
-  }
+    }
 };
 </script>
 
