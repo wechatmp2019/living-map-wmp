@@ -2,23 +2,34 @@
 // make sure to call Vue.use(Vuex) if using a module system
 import Vue from 'vue';
 import Vuex from 'vuex';
+// import $http from '@/http/request';
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
-  state: {
-    count: 0
-  },
-  mutations: {
-    increment: (state) => {
-      const obj = state;
-      obj.count += 1;
+    namespace: true,
+    state: {
+        count: 0
     },
-    decrement: (state) => {
-      const obj = state;
-      obj.count -= 1;
+    getters: {
+        count: state => state.count
+    },
+    mutations: {
+        increment: (state, payload) => {
+            const obj = state;
+            obj.count += payload;
+        },
+        decrement: (state, payload) => {
+            const obj = state;
+            obj.count -= payload;
+        }
+    },
+    actions: {
+        getCount: async (context, payload) => {
+            // const res =  await $http.get('api/...');
+            // context.commit('increment', res.data);
+        }
     }
-  }
 });
 
 export default store;

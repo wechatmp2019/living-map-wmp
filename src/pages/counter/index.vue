@@ -13,19 +13,19 @@
 import store from './store';
 
 export default {
-  computed: {
-    count () {
-      return store.state.count;
-    }
-  },
-  methods: {
-    increment () {
-      store.commit('increment');
+    computed: {
+        count () {
+            return store.getters.count;
+        }
     },
-    decrement () {
-      store.commit('decrement');
+    methods: {
+        increment () {
+            store.commit('increment', 5);
+        },
+        decrement () {
+            store.commit('decrement', 3);
+        }
     }
-  }
 };
 </script>
 
