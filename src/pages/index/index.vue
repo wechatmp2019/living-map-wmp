@@ -21,16 +21,14 @@
 
     <!-- 地图主题和卡片列表 -->
     <i-row i-class="main">
-      <home-card title="cccccc" extra="ddddd">
-        <div slot="content">slot content</div>
-        <div slot="footer">slot footer</div>
+      <home-card title="cccccc" type="place" :detail="[111,222,333]">
       </home-card>
     </i-row>
   </div>
 </template>
 
 <script lang="js">
-import HomeCard from '@/components/card/HomeCard';
+import HomeCard from '@/components/homeCard/HomeCard';
 import AsideMenu from '@/components/asideMenu/AsideMenu';
 
 export default {
