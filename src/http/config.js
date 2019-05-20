@@ -2,15 +2,17 @@
  * @Author: chenjiaxi
  * @Date: 2019-05-15 19:49:36
  * @Last Modified by: chenjiaxi
- * @Last Modified time: 2019-05-15 21:57:10
+ * @Last Modified time: 2019-05-20 16:53:04
  */
 
 import config from '@/config';
 import Fly from 'flyio/dist/npm/wx';
+import { Token } from '../utils/token';
 const fly = new Fly();
 
 fly.config.timeout = 2000;
 fly.config.baseURL = config.host;
+fly.noRefetch = false; // noRefetch 为 true 时，不做未授权重试机制
 
 // 添加请求拦截器
 fly.interceptors.request.use((request) => {
@@ -36,6 +38,20 @@ fly.interceptors.response.use(
     },
     (err) => {
         console.log(err);
+        // token 重试机制
+        if (err.status) {
+            const httpCode = err.status.toString();
+            if (httpCode === '403') { // 或 401
+                if (!fly.noRefetch) {
+                    const requset = err.request;
+                    _refetch({
+                        url: requset.url,
+                        data: requset.body,
+                        options: {method: requset.method}
+                    });
+                }
+            }
+        }
         wx.hideLoading();
         if (err) {
             wx.showToast({
@@ -43,8 +59,25 @@ fly.interceptors.response.use(
                 icon: 'none',
                 duration: 1000
             });
-            return 'request failed';
         }
     });
+
+const _refetch = (params) => {
+    const token = new Token();
+    fly.noRefetch = true; // 避免陷入重发循环
+    token.getTokenFromServer((token) => {
+        fly.request(params.url, params.data, params.options)
+            .then(() => {
+                fly.noRefetch = false; // 重置 noRefetch 状态
+            })
+            .catch((e) => {
+                wx.showToast({
+                    title: '令牌服务器故障',
+                    icon: 'none',
+                    duration: 1000
+                });
+            });
+    });
+};
 
 export default fly;
