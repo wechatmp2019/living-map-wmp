@@ -2,7 +2,7 @@
  * @Author: chenjiaxi
  * @Date: 2019-05-15 19:49:36
  * @Last Modified by: chenjiaxi
- * @Last Modified time: 2019-05-20 16:53:04
+ * @Last Modified time: 2019-05-20 17:29:09
  */
 
 import config from '@/config';
@@ -39,26 +39,26 @@ fly.interceptors.response.use(
     (err) => {
         console.log(err);
         // token 重试机制
-        if (err.status) {
-            const httpCode = err.status.toString();
-            if (httpCode === '403') { // 或 401
-                if (!fly.noRefetch) {
-                    const requset = err.request;
-                    _refetch({
-                        url: requset.url,
-                        data: requset.body,
-                        options: {method: requset.method}
-                    });
-                }
+        const httpCode = err.status.toString();
+        if (httpCode === '403') { // 或 401
+            if (!fly.noRefetch) {
+                const requset = err.request;
+                _refetch({
+                    url: requset.url,
+                    data: requset.body,
+                    options: {method: requset.method}
+                });
             }
         }
-        wx.hideLoading();
-        if (err) {
-            wx.showToast({
-                title: '请求失败',
-                icon: 'none',
-                duration: 1000
-            });
+        if (fly.noRefetch || httpCode !== '403') {
+            wx.hideLoading();
+            if (err) {
+                wx.showToast({
+                    title: '请求失败',
+                    icon: 'none',
+                    duration: 1000
+                });
+            }
         }
     });
 
