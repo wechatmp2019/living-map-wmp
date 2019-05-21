@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="home-card-operation">
-            <card-operation :type="type"/>
+            <card-operation :type="type" />
         </div>
     </div>
 </template>
@@ -50,7 +50,6 @@ export default {
     computed: {
     },
     methods: {
-
     }
 };
 </script>

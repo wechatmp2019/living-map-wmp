@@ -1,6 +1,6 @@
 <template>
-    <div class="card-operation" @click="toggleCardOperation">
-        <block v-if="type === 'place'">
+    <div class="card-operation" @click="handleCardOperation">
+        <div v-if="type === 'place'">
             <div class="card-operation-icon">
                 <i-icon type="flag_fill" size="36" v-if="hasSaved"/>
                 <i-icon type="flag" size="36" v-else/>
@@ -9,8 +9,8 @@
                 <text v-if="hasSaved">已订阅</text>
                 <text v-else>订阅</text>
             </div>
-        </block>
-        <block v-else>
+        </div>
+        <div v-else>
             <div class="card-operation-icon">
                 <i-icon type="service_fill" size="36" v-if="hasSaved"/>
                 <i-icon type="service" size="36" v-else/>
@@ -19,7 +19,7 @@
                 <text v-if="hasSaved">已加入卡包</text>
                 <text v-else>加入卡包</text>
             </div>
-        </block>
+        </div>
     </div>
 
 </template>
@@ -41,8 +41,10 @@ export default {
     computed: {
     },
     methods: {
-        toggleCardOperation () {
+        handleCardOperation (e) {
+            e.stopPropagation();
             this.hasSaved = !this.hasSaved;
+            return false;
         }
     }
 };

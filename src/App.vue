@@ -66,14 +66,7 @@ export default {
     },
 
     onLaunch () {
-        wx.checkSession({
-            success: () => {
-                console.log('session success');
-            },
-            fail: () => {
-                this._login();
-            }
-        });
+        this._login();
     }
 
 };
