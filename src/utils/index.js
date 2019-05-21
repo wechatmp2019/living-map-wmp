@@ -18,7 +18,17 @@ export function formatTime (date) {
     return `${t1} ${t2}`;
 }
 
+export function styles (style) {
+    let s = [];
+    for (let i in style) {
+        s.push(i + ':' + style[i]);
+    }
+    s = s.join(';');
+    return s;
+}
+
 export default {
     formatNumber,
-    formatTime
+    formatTime,
+    styles
 };
