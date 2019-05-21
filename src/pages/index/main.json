@@ -11,6 +11,8 @@
         "i-input": "/static/iview/input/index",
         "i-panel": "/static/iview/panel/index",
         "i-radio-group": "/static/iview/radio-group/index",
-        "i-radio": "/static/iview/radio/index"
+        "i-radio": "/static/iview/radio/index",
+        "i-collapse": "/static/iview/collapse/index",
+        "i-collapse-item": "/static/iview/collapse-item/index"
     }
 }
