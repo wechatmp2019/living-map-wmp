@@ -8,7 +8,7 @@
             <open-data type="userCity" lang="zh_CN" />
         </div>
         <div class="profile__other-info">
-            <open-data type="userGender" v-model="userGender"/>
+            <open-data type="userGender"/>
             <div class="cuIcon-male" style="color: blue"></div>
             <div class="profile__campus"></div>
         </div>
@@ -38,7 +38,6 @@ export default {
     name: 'aside-menu',
     data () {
         return {
-            userGender: ''
         };
     },
     props: {
@@ -51,9 +50,6 @@ export default {
     },
     methods: {
 
-    },
-    created () {
-        console.log(this.userGender);
     }
 };
 </script>
