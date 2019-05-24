@@ -1,5 +1,7 @@
 <script>
 import { mapState, mapActions } from 'vuex';
+import { Token } from './utils/token';
+const token = new Token();
 
 export default {
     data () {
@@ -9,25 +11,12 @@ export default {
     },
     computed: {
         ...mapState([
-            'openId'
         ])
     },
     methods: {
         ...mapActions([
-            'login'
-        ]),
-        _login () {
-            wx.login({
-                success: (res) => {
-                    if (res.code) {
-                        console.log('wx.login success,code:', res.code);
-                        this.login(res.code);
-                    } else {
-                        this.$tips.toast('微信登录失败');
-                    }
-                }
-            });
-        }
+            'getMap'
+        ])
     },
     created () {
     // 调用API从本地缓存中获取数据
@@ -64,9 +53,19 @@ export default {
     //   }
     // });
     },
+    destroyed () {
+        console.log('app destroy');
+        try {
+            wx.clearStorageSync();
+        } catch (e) {
+        // Do something when catch error
+        }
+    },
 
-    onLaunch () {
-        this._login();
+    async onLaunch () {
+        await token.login(() => {
+            this.getMap();
+        });
     }
 
 };
@@ -84,6 +83,11 @@ export default {
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
+}
+::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+    color: transparent;
 }
 /* this rule will be remove */
 * {
