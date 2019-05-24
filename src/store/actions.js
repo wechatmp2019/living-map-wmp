@@ -3,28 +3,23 @@
  * @Author: chenjiaxi
  * @Date: 2019-05-15 22:06:14
  * @Last Modified by: chenjiaxi
- * @Last Modified time: 2019-05-20 15:23:57
+ * @Last Modified time: 2019-05-23 22:32:10
  */
 
 import $http from '@/http/request';
+import Config from '@/config';
 import * as types from './mutationTypes';
+
 const actions = {
 
-    login: async (context, payload) => {
-        try {
-            const resData = await $http.login({code: payload});
-            if (toString(resData.returnCode).charAt(0) === '2') {
-                context.commit(types.SET_OPEN_ID, resData.data.openId);
-                console.log(resData.data);
-                wx.setStorageSync('token', resData.data.token);
-            }
-        } catch (err) {
-            console.log(err);
-            wx.showToast({
-                title: '登录失败',
-                icon: 'none',
-                duration: 1000
-            });
+    getMap: async (context, payload) => {
+        const resData = await $http.get({
+            url: `/api/map/${Config.buptMapId}`,
+            data: payload
+        });
+        if (resData.success) {
+            context.commit(types.SET_CURRENT_MAP, resData.data);
+            context.commit(types.SET_MARK_POINT, resData.data.markpoints);
         }
     }
 };
