@@ -27,8 +27,22 @@ export function styles (style) {
     return s;
 }
 
+export function getEventData (e) {
+    return e.mp.detail;
+};
+
+export function toast (content) {
+    wx.showToast({
+        title: content,
+        icon: 'none',
+        duration: 1000
+    });
+}
+
 export default {
     formatNumber,
     formatTime,
-    styles
+    styles,
+    getEventData,
+    toast
 };
