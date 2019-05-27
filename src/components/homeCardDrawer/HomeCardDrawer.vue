@@ -86,7 +86,7 @@ export default {
     methods: {
         handleViewChange (e) {
             const offsetY = e.y;
-            if (offsetY > 18) {
+            if (offsetY > 10) {
                 this.hideCardsList();
             }
         },
@@ -133,7 +133,8 @@ export default {
     padding: 0 8px;
     background:rgb(255,255,255,0);
     width: 96%;
-    transition: all 0.3s linear;
+    /* transition: all 0.3s linear; */
+    transition: opacity 0.5s linear;
 }
 .notice-bar, .list__item {
     padding-bottom: 8px;
