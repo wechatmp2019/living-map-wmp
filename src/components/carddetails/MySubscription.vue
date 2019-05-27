@@ -3,7 +3,8 @@
       <i-panel title="我的订阅" class = "titlecontainer">
     <view class="caption-wrap">
       <i-collapse :name="name" >
-        <i-collapse-item class = "slotcontainer" v-for="item in list.cardtype" :title="item.name" :name="item.id" :key ="item.id"><view slot="content" >
+        <div class = "slotcontainer">
+        <i-collapse-item v-for="item in list.cardtype" :title="item.name" :name="item.id" :key ="item.id"><view slot="content" >
         <div class = cardcontainer>
             <div class = "contentcontainer">
             {{item.content}}
@@ -13,6 +14,7 @@
             </div>
         </div>
           </view> </i-collapse-item>
+          </div>
       </i-collapse>
     </view>
     </i-panel>
@@ -53,23 +55,25 @@
         }
     };
 </script>
+</script>
 <style>
 .titlecontainer{
     font-weight: bold;
     padding-top: 10vh;
 }
 .slotcontainer{
-    padding-top: 1vh;
+    padding-bottom: 1vh;
     text-align:center;
     font-family:'Courier New', Courier, monospace;
     font-size: large;
     font-weight: bold;
+    border-style: ridge;
 }
 .contentcontainer{
     text-align: left;
     padding: 1vh;
     color: black;
-    font-weight: normal
+    font-weight: normal;
 }
 .timecontainer{
     padding: 1vh;
