@@ -1,19 +1,27 @@
 <template>
     <div class="campus-map" >
-        <image src="/static/images/mockMap.jpg" mode="widthFix" class="campus-map__img"/>
-        <map-mark :position="[6, 6]"/>
-        <map-mark :position="[20, 20]"/>
-        <map-mark :position="[50, 50]"/>
+        <scroll-view scroll-y :enable-back-to-top="true" class="map-scroll-container">
+            <image :src="currentMap ? currentMap.imageUrl : loadingUrl" mode="widthFix" class="campus-map__img"/>
+            <map-mark v-for="(item,index) in mapMarks" :key="item.id+index" 
+                :position="[item.latitude, item.longitude]" 
+                :clickHandler="handleMapMarkClick(item.id, item.name)"/>
+        </scroll-view>
     </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import MapMark from './MapMark';
 
 export default {
     name: 'campus-map',
     components: {
         MapMark
+    },
+    data () {
+        return {
+            loadingUrl: 'https://image.weilanwl.com/gif/loading-white.gif'
+        };
     },
     props: {
         campus: {
@@ -26,8 +34,18 @@ export default {
         }
     },
     computed: {
+        ...mapState([
+            'currentMap'
+        ])
     },
     methods: {
+        handleMapMarkClick (markId, markName) {
+            return () => {
+                this.$emit('markClick', markId, markName);
+            };
+        }
+    },
+    onLoad () {
     }
 };
 </script>
@@ -35,6 +53,9 @@ export default {
 <style scoped>
 .campus-map {
     position: relative;
+}
+.map-scroll-container {
+    height: 100vh;
 }
 .campus-map__img {
     width: 100vw;

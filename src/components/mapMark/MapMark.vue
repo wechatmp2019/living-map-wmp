@@ -1,5 +1,5 @@
 <template>
-    <div class="map-mark" :style="style">
+    <div class="map-mark" :style="style" @click="clickHandler">
         <i-icon type="coordinates_fill" :size="size" :custom="icon" :color="color"/>
     </div>
 </template>
@@ -11,6 +11,9 @@ export default {
     components: {
     },
     props: {
+        clickHandler: {
+            type: Function
+        },
         icon: {
             type: String,
             default: ''
@@ -29,7 +32,7 @@ export default {
         },
         color: {
             type: String,
-            default: '#B2D0EA'
+            default: '#fff'
         }
     },
     computed: {
