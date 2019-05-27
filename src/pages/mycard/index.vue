@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>
+    <div class = "main-container">
         <MyCard></MyCard>
     </div>
   </div>
@@ -11,26 +11,6 @@
     export default {
         data () {
             return {
-                name: 'name1',
-                list: {
-                    cardtype: [{
-                        id: 1,
-                        name: 'aaa',
-                        content: 'aaaaaaaa',
-                        updatetime: '2013'
-                    }, {
-                        id: 2,
-                        name: 'bbb',
-                        content: 'bbbbbbbb',
-                        updatetime: '2013'
-                    }, {
-                        id: 3,
-                        name: 'ccc',
-                        content: 'cccccccc',
-                        updatetime: '2013'
-                    }
-                    ]
-                }
             };
         },
         components: {
@@ -42,3 +22,8 @@
         }
     };
 </script>
+<style>
+.main-container{
+    padding: 2vh
+}
+</style>

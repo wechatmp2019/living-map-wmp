@@ -1,6 +1,6 @@
 <template>
   <div>
-      <i-panel title="我的卡包" class = "titlecontainer">
+      <i-panel title="我的订阅" class = "titlecontainer">
     <view class="caption-wrap">
       <i-collapse :name="name" >
         <i-collapse-item class = "slotcontainer" v-for="item in list.cardtype" :title="item.name" :name="item.id" :key ="item.id"><view slot="content" >
@@ -28,19 +28,19 @@
                 list: {
                     cardtype: [{
                         id: 1,
-                        name: '校医院',
-                        content: '校医院挂号须知',
+                        name: '招生就业',
+                        content: '',
                         updatetime: '2019-5-23'
                     }, {
                         id: 2,
-                        name: '校医院',
-                        content: '如何开具转院单',
+                        name: '干货分享',
+                        content: '',
                         updatetime: '2019-5-24'
 
                     }, {
                         id: 3,
-                        name: '保卫处',
-                        content: '如何借户籍卡',
+                        name: '时事新闻',
+                        content: '',
                         updatetime: '2019-5-27'
                     }
                     ]
