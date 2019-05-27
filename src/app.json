@@ -1,7 +1,11 @@
 {
   "pages": [
     "pages/index/main",
-    "pages/counter/main"
+    "pages/counter/main",
+    "pages/contactus/main",
+    "pages/mycard/main",
+    "pages/mysubscription/main",
+    "pages/feedback/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

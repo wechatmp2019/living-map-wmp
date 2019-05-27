@@ -7,7 +7,7 @@
 </template>
 
 <script>
-    import Feedback from '@/components/cardetails/Feedback';
+    import Feedback from '@/components/carddetails/Feedback';
     export default({
         data () {
             return {
