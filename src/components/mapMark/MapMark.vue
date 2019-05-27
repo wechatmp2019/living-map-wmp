@@ -1,6 +1,7 @@
 <template>
     <div class="map-mark" :style="style" @click="clickHandler">
-        <i-icon type="coordinates_fill" :size="size" :custom="icon" :color="color"/>
+        <i-icon :size="size" :custom="icon" :color="color"/>
+        <image :src="icon"/>
     </div>
 </template>
 
