@@ -7,7 +7,7 @@
 </template>
 
 <script>
-    import MyCard from '@/components/cardetails/MyCard';
+    import MyCard from '@/components/carddetails/MyCard';
     export default {
         data () {
             return {
