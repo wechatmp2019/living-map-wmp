@@ -12,6 +12,8 @@
 	"appid": "wx5d3ac051c6e80d56",
 	"projectname": "life-map-wmp",
 	"libVersion": "2.7.0",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
