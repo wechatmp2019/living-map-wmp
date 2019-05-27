@@ -7,7 +7,7 @@
 </template>
 
 <script>
-    import ContactUs from '@/components/cardetails/ContactUs';
+    import ContactUs from '@/components/carddetails/ContactUs';
     export default({
         components: {
             ContactUs
