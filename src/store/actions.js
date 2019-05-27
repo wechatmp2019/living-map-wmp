@@ -3,7 +3,7 @@
  * @Author: chenjiaxi
  * @Date: 2019-05-15 22:06:14
  * @Last Modified by: chenjiaxi
- * @Last Modified time: 2019-05-23 22:32:10
+ * @Last Modified time: 2019-05-25 22:21:11
  */
 
 import $http from '@/http/request';
@@ -19,7 +19,7 @@ const actions = {
         });
         if (resData.success) {
             context.commit(types.SET_CURRENT_MAP, resData.data);
-            context.commit(types.SET_MARK_POINT, resData.data.markpoints);
+            context.commit(types.SET_MARK_POINTS, resData.data.markpoints);
         }
     }
 };
