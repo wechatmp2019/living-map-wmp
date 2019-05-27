@@ -1,19 +1,18 @@
 <template>
   <div>
     <!-- 顶栏和抽屉菜单 -->
-    <i-row>
       <div class="top-bar">
-        <i-col span="4">
-            <div  @click="toggleMine">
-                <i-icon type="mine" size="44" color="#fff"/>
-            </div>
-        </i-col>
-        <i-col span="16" class="top-bar__title">{{currentMark}}</i-col>
-        <i-col span="4" class="top-bar__sub-menu">
-            <div @click="handleSubMenuClick">
+        <span  @click="toggleMine">
+            <i-icon type="mine" size="44" color="#fff"/>
+        </span>
+    
+        <span class="top-bar__title">{{currentMark}}</span>
+
+        <span class="top-bar__sub-menu">
+            <span @click="handleSubMenuClick">
                 <i-icon type="other" size="44" color="#fff" />
-            </div>
-        </i-col>
+            </span>
+        </span>
       </div>
 
       <i-drawer mode="left" :visible="showMine" @close="toggleMine">
@@ -21,12 +20,11 @@
             <aside-menu></aside-menu>
         </div>
       </i-drawer>
-    </i-row>
 
     <!-- 地图主体和卡片列表 -->
     <div class="main-map">
-        <campus-map />
-        <home-card-drawer :list="mockData.homeCardDrawer" place="信息化中心"
+        <campus-map @markClick="handleMarkClick" :mapMarks="markPoints"/>
+        <home-card-drawer :list="currentCardsList" place="信息化中心"
             notice="mpvue v-for循环特别卡"/>
         <!-- <home-card :detail="[111,222,333]" title="23423"/>-->
     </div>
@@ -34,6 +32,7 @@
 </template>
 
 <script lang="js">
+import { mapState, mapActions, mapGetters } from 'vuex';
 import HomeCard from '@/components/homeCard/HomeCard';
 import AsideMenu from '@/components/asideMenu/AsideMenu';
 import HomeCardDrawer from '@/components/homeCardDrawer/homeCardDrawer';
@@ -42,7 +41,8 @@ import CampusMap from '@/components/mapMark/CampusMap.vue';
 export default {
     data () {
         return {
-            currentMark: '一米校园',
+            currentMark: 'BUPT',
+            currentCardsList: [],
             showMine: false,
             mockData: {
                 homeCardDrawer: [
@@ -70,8 +70,20 @@ export default {
         HomeCardDrawer,
         CampusMap
     },
-
+    computed: {
+        ...mapState([
+            'markPoints'
+        ]),
+        ...mapGetters({
+            getCards: 'getCardsByMarkPointId',
+            getMarkPointById: 'getMarkPointById',
+            getCardsMap: 'getCardsMap'
+        })
+    },
     methods: {
+        ...mapActions([
+            'getMap'
+        ]),
         toggleMine (e) {
             this.showMine = !this.showMine;
         },
@@ -82,6 +94,15 @@ export default {
             } else {
                 mpvue.navigateTo({ url });
             }
+        },
+        handleMarkClick (markId, markName) {
+            this.currentMark = markName;
+            const currentCards = this.getCards(markId);
+            if (currentCards) {
+                this.currentCardsList = currentCards;
+            } else {
+                this.currentCardsList = [];
+            }
         }
     },
 
@@ -89,17 +110,21 @@ export default {
     // let app = getApp();
     },
     onLoad () {
+        // this.getMap();
     }
 };
 </script>
 
 <style scoped>
 .top-bar {
-  height: 44px;
-  background:rgba(178,208,234,1);
-  opacity:0.9;
-  color: #6A9BC6;
+  height: 40px;
+  background: #B2D0EA;
+  color: #fff;
+  font-weight: 500;
   padding: 0 10px;
+  font-size:20px;
+  display: flex;
+  justify-content: space-between;
 }
 .top-bar__title {
   height: 100%;

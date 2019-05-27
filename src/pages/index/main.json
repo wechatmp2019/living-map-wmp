@@ -1,19 +1,11 @@
 {
-    "navigationBarTitleText": "Home",
+    "navigationBarTitleText": "一米校园",
     "usingComponents": {
         "i-button": "/static/iview/button/index",
         "i-icon": "/static/iview/icon/index",
-        "i-row": "/static/iview/row/index",
-        "i-col": "/static/iview/col/index",
         "i-drawer": "/static/iview/drawer/index",
         "i-cell-group": "/static/iview/cell-group/index",
         "i-cell": "/static/iview/cell/index",
-        "i-notice-bar": "/static/iview/notice-bar/index",
-        "i-input": "/static/iview/input/index",
-        "i-panel": "/static/iview/panel/index",
-        "i-radio-group": "/static/iview/radio-group/index",
-        "i-radio": "/static/iview/radio/index",
-        "i-collapse": "/static/iview/collapse/index",
-        "i-collapse-item": "/static/iview/collapse-item/index"
+        "i-notice-bar": "/static/iview/notice-bar/index"
     }
 }
