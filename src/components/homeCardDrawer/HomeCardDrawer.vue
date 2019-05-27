@@ -15,7 +15,7 @@
                 <div class="home-card-list" >
                     <div class="list__item" v-for="(item, index) in list" :key="item.id+index">
                         <home-card :title="item.title"
-                            :detail="item.detail"/>
+                            :detail="JSON.parse(item.detail)"/>
                     </div>
                 </div>
             </div>
@@ -33,12 +33,9 @@ export default {
     },
     data () {
         return {
-            listTop: -1,
-            touchPoint: 0,
             curListHeight: 0,
-            backupListHeight: 0,
-            listVisibility: 'visible',
-            listOpacity: 1,
+            listVisibility: 'hidden',
+            listOpacity: 0,
             showMovableArea: false
         };
     },
@@ -54,6 +51,10 @@ export default {
         list: {
             type: Array,
             default: []
+        },
+        clickId: {
+            type: Number,
+            require: true
         }
     },
     computed: {
@@ -66,53 +67,36 @@ export default {
         },
         movableAreaStyle () {
             return this.$styles({
-                display: this.showMovableArea ? 'block' : 'none'
+                visibility: this.showMovableArea ? 'visible' : 'hidden'
             });
         }
     },
     watch: {
-        list () {
+        clickId () {
             setTimeout(() => {
                 this.resetCardListHeight();
-                this.showCardsList();
+                if (this.list.length > 0) {
+                    this.showCardsList();
+                } else {
+                    this.hideCardsList();
+                }
             }, 100);
-        },
-        touchPoint (newVal, oldVal) {
-            if (oldVal !== -1) {
-                const moveDistance = Math.abs(newVal - oldVal) > 50 ? (newVal - oldVal) : 0;
-                // const direction = moveDistance > 0; // true 为向下，false向上
-                // this.cardListElement.exec((rect) => {
-                //     if (direction) { // 向下滑动
-                //         if (rect[0].top > 399) {
-                //             this.listTop += moveDistance;
-                //         }
-                //     } else { // 向上滑动
-                //         if (rect[0].bottom < 0) {
-                //             this.listTop += moveDistance;
-                //         }
-                //     }
-                // });
-                this.listTop += moveDistance;
-            }
         }
     },
     methods: {
         handleViewChange (e) {
             const offsetY = e.y;
-            console.log(offsetY);
-            if (offsetY > 20) {
+            if (offsetY > 18) {
                 this.hideCardsList();
             }
         },
         handleTouchMove (e) {
             // clientY 是距离可显示区域的垂直距离，pageY 是距离文件顶部的垂直距离（大）
-            // this.touchPoint = e.touches[0].clientY;
         },
-        handleTouchStart (e) {
-            // this.getCardListTop('listTop');
-        },
-        handleTouchEnd (e) {
-            console.log('end', e);
+        handleTouchStart () {
+            // 关键代码，加上这段交互才能正常
+            this.$forceUpdate();
+            this.resetCardListHeight();
         },
         resetCardListHeight () {
             wx.createSelectorQuery().select('#cardList').boundingClientRect().exec((rect) => {
@@ -122,14 +106,11 @@ export default {
         },
         hideCardsList () {
             this.showMovableArea = false;
-            // this.backupListHeight = this.curListHeight;
-            // this.curListHeight = 0;
-            this.listVisibility = 'hidden';
             this.listOpacity = 0;
+            this.listVisibility = 'hidden';
         },
         showCardsList () {
             this.showMovableArea = true;
-            // this.curListHeight = this.backupListHeight;
             this.listVisibility = 'visible';
             this.listOpacity = 1;
         }
@@ -152,11 +133,7 @@ export default {
     padding: 0 8px;
     background:rgb(255,255,255,0);
     width: 96%;
-    transition: all .5s linear;
-    /* overflow: hidden; */
-    /* position: fixed; */
-    /* top: 0vh;   */
-    /* height: 150px; */
+    transition: all 0.3s linear;
 }
 .notice-bar, .list__item {
     padding-bottom: 8px;
