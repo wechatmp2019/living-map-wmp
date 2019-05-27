@@ -5,18 +5,17 @@
         <open-data type="userNickName" lang="zh_CN" class="profile__nickname"/>
         <div class="profile__area">
             <open-data type="userProvince" lang="zh_CN"/>
+            <span>&nbsp;</span>
             <open-data type="userCity" lang="zh_CN" />
         </div>
         <div class="profile__other-info">
-            <open-data type="userGender"/>
-            <div class="cuIcon-male" style="color: blue"></div>
             <div class="profile__campus"></div>
         </div>
     </div>
 
     <div class="menu">
         <i-cell-group>
-            <i-cell title="我的卡包" is-link :url="naviUrl.myCards" @click="handleCellClick">
+            <i-cell title="我的卡包" is-link :url="naviUrl.myCards">
                 <i-icon slot="icon" type="tasklist" size="28" />
             </i-cell>
             <i-cell title="我的订阅" is-link :url="naviUrl.mySubscription">
@@ -39,10 +38,10 @@ export default {
     data () {
         return {
             naviUrl: {
-                myCards: 'pages/mycard/main',
-                mySubscription: 'pages/mysubscription/main',
-                feedback: 'pages/feedback/main',
-                aboutUs: 'pages/contactus/main'
+                myCards: '/pages/mycard/main',
+                mySubscription: '/pages/mysubscription/main',
+                feedback: '/pages/feedback/main',
+                aboutUs: '/pages/contactus/main'
             }
         };
     },
@@ -55,11 +54,6 @@ export default {
     computed: {
     },
     methods: {
-        handleCellClick () {
-            wx.navigateTo({
-                url: this.naviUrl.myCards
-            });
-        }
     }
 };
 </script>
@@ -72,6 +66,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 24px 0 36px;
 }
 .profile__avatar {
     width: 64px;
@@ -81,6 +76,9 @@ export default {
     border-radius: 50%;
     border: 2px solid #fff;  
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); 
+}
+.profile__nickname {
+    padding: 4px;
 }
 
 
