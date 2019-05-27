@@ -2,7 +2,7 @@
  * @Author: chenjiaxi
  * @Date: 2019-05-15 19:49:36
  * @Last Modified by: chenjiaxi
- * @Last Modified time: 2019-05-23 16:56:33
+ * @Last Modified time: 2019-05-27 01:39:09
  */
 
 import qs from 'qs';
@@ -11,7 +11,7 @@ import Fly from 'flyio/dist/npm/wx';
 import { Token } from '../utils/token';
 const fly = new Fly();
 
-fly.config.timeout = 2000;
+fly.config.timeout = 5000;
 fly.config.baseURL = config.host;
 fly.noRefetch = false; // noRefetch 为 true 时，不做未授权重试机制
 
