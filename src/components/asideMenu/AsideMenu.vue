@@ -16,16 +16,16 @@
 
     <div class="menu">
         <i-cell-group>
-            <i-cell title="我的卡包" is-link >
+            <i-cell title="我的卡包" is-link :url="naviUrl.myCards" @click="handleCellClick">
                 <i-icon slot="icon" type="tasklist" size="28" />
             </i-cell>
-            <i-cell title="我的订阅" is-link >
+            <i-cell title="我的订阅" is-link :url="naviUrl.mySubscription">
                 <i-icon slot="icon" type="collection_fill" size="28" />
             </i-cell>
-            <i-cell title="问题反馈" is-link>
+            <i-cell title="问题反馈" is-link :url="naviUrl.feedback">
                 <i-icon slot="icon" type="group" size="28"/>
             </i-cell>
-            <i-cell title="关于我们" is-link>
+            <i-cell title="关于我们" is-link :url="naviUrl.aboutUs">
                 <i-icon slot="icon" type="label" size="28"/>
             </i-cell>
         </i-cell-group>
@@ -38,6 +38,12 @@ export default {
     name: 'aside-menu',
     data () {
         return {
+            naviUrl: {
+                myCards: 'pages/mycard/main',
+                mySubscription: 'pages/mysubscription/main',
+                feedback: 'pages/feedback/main',
+                aboutUs: 'pages/contactus/main'
+            }
         };
     },
     props: {
@@ -49,7 +55,11 @@ export default {
     computed: {
     },
     methods: {
-
+        handleCellClick () {
+            wx.navigateTo({
+                url: this.naviUrl.myCards
+            });
+        }
     }
 };
 </script>
