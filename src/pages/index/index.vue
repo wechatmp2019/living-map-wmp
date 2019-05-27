@@ -25,7 +25,7 @@
     <div class="main-map">
         <campus-map @markClick="handleMarkClick" :mapMarks="markPoints"/>
         <home-card-drawer :list="currentCardsList" place="信息化中心"
-            notice="mpvue v-for循环特别卡"/>
+            notice="mpvue v-for循环特别卡" :clickId="clickId"/>
         <!-- <home-card :detail="[111,222,333]" title="23423"/>-->
     </div>
   </div>
@@ -44,6 +44,7 @@ export default {
             currentMark: 'BUPT',
             currentCardsList: [],
             showMine: false,
+            clickId: 0,
             mockData: {
                 homeCardDrawer: [
                     {
@@ -97,6 +98,7 @@ export default {
         },
         handleMarkClick (markId, markName) {
             this.currentMark = markName;
+            this.clickId++;
             const currentCards = this.getCards(markId);
             if (currentCards) {
                 this.currentCardsList = currentCards;
