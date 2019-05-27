@@ -16,15 +16,18 @@
                     cardtype: [{
                         id: 1,
                         name: 'aaa',
-                        content: 'aaaaaaaa'
+                        content: 'aaaaaaaa',
+                        updatetime: '2013'
                     }, {
                         id: 2,
                         name: 'bbb',
-                        content: 'bbbbbbbb'
+                        content: 'bbbbbbbb',
+                        updatetime: '2013'
                     }, {
                         id: 3,
                         name: 'ccc',
-                        content: 'cccccccc'
+                        content: 'cccccccc',
+                        updatetime: '2013'
                     }
                     ]
                 }
