@@ -3,7 +3,7 @@
  * @Author: chenjiaxi
  * @Date: 2019-05-15 22:06:14
  * @Last Modified by: chenjiaxi
- * @Last Modified time: 2019-05-25 22:21:11
+ * @Last Modified time: 2019-05-29 00:45:21
  */
 
 import $http from '@/http/request';
@@ -46,6 +46,15 @@ const actions = {
                 cardId: payload.cardId,
                 collected: false
             });
+        }
+    },
+    getUserCards: async (context, payload) => {
+        // 获取用户收藏的卡片
+        const resData = await $http.get({
+            url: `/api/card/collection`
+        });
+        if (resData.success) {
+            return resData.data;
         }
     }
 };
