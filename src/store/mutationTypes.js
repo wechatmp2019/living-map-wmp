@@ -8,3 +8,4 @@
 
 export const SET_CURRENT_MAP = 'SET_CURRENT_MAP';
 export const SET_MARK_POINTS = 'SET_MARK_POINTS';
+export const SAVE_CARD = 'SAVE_CARD';

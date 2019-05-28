@@ -20,6 +20,9 @@ const matations = {
         state.markPoints.forEach(item => {
             state.cardsMap[item.id] = item.cards;
         });
+    },
+    [types.SAVE_CARD] (state, payload) {
+        state.cardsMap[payload.markId].find(card => card.id === payload.cardId).collected = payload.collected;
     }
 };
 

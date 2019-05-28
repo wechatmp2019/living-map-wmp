@@ -11,10 +11,15 @@ const getters = {
         return state.markPoints.find(markPoints => markPoints.id === id);
     },
     getCardsMap: (state) => {
+        // markpointId 到 cards 数组的映射
         return state.cardsMap;
     },
     getCardsByMarkPointId: (state) => (id) => {
         return state.cardsMap[id];
+    },
+    getCardByCardAndMarkId: (state, getters) => (cardId, markId) => {
+        const card = state.cardsMap[markId].find(card => card.id === cardId);
+        return card;
     }
 };
 
