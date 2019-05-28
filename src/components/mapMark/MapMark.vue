@@ -57,5 +57,16 @@ export default {
     width: 50px;
     height: 50px;
 }
-
+.mark-image--big {
+    width: 110px;
+    height: 110px;
+}
+.zhulou {
+    width: 75px;
+    height: 75px;
+}
+.tushuguan, .xueshi {
+    width: 90px;
+    height: 90px;
+}
 </style>
