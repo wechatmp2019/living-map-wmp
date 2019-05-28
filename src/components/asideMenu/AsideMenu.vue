@@ -16,16 +16,16 @@
     <div class="menu">
         <i-cell-group>
             <i-cell title="我的卡包" is-link :url="naviUrl.myCards">
-                <i-icon slot="icon" type="tasklist" size="28" />
+                <image slot="icon" src="/static/images/icon/mycards.png" class="menu__icon"/>
             </i-cell>
             <i-cell title="我的订阅" is-link :url="naviUrl.mySubscription">
-                <i-icon slot="icon" type="collection_fill" size="28" />
+                <image slot="icon" src="/static/images/icon/mysubscribe.png" class="menu__icon"/>
             </i-cell>
             <i-cell title="问题反馈" is-link :url="naviUrl.feedback">
-                <i-icon slot="icon" type="group" size="28"/>
+                <image slot="icon" src="/static/images/icon/feedback.png" class="menu__icon"/>
             </i-cell>
             <i-cell title="关于我们" is-link :url="naviUrl.aboutUs">
-                <i-icon slot="icon" type="label" size="28"/>
+                <image slot="icon" src="/static/images/icon/aboutus.png" class="menu__icon"/>
             </i-cell>
         </i-cell-group>
     </div>
@@ -79,6 +79,10 @@ export default {
 }
 .profile__nickname {
     padding: 4px;
+}
+.menu__icon {
+    height: 24px;
+    width: 22px;
 }
 
 
