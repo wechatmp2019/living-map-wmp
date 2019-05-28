@@ -3,7 +3,7 @@
         <scroll-view scroll-y :enable-back-to-top="true" class="map-scroll-container">
             <image :src="currentMap ? currentMap.imageUrl : loadingUrl" mode="widthFix" class="campus-map__img"/>
             <map-mark v-for="(item,index) in mapMarks" :key="item.id+index" 
-                :icon="item.image_url"
+                :icon="item.image_url" :place="item.name"
                 :position="[item.latitude, item.longitude]" 
                 :clickHandler="handleMapMarkClick(item.id, item.name)"/>
         </scroll-view>

@@ -1,7 +1,8 @@
 <template>
     <div class="map-mark" :style="style" @click="clickHandler">
-        <i-icon :size="size" :custom="icon" :color="color"/>
-        <image :src="icon"/>
+        <!-- <i-icon :size="size" :custom="icon" :color="color"/> -->
+        <image :src="icon" width="50px" height="50px" mode="aspectFit"/>
+        <div>{{place}}</div>
     </div>
 </template>
 
