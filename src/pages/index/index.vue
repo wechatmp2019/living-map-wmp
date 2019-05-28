@@ -2,16 +2,14 @@
   <div>
     <!-- 顶栏和抽屉菜单 -->
       <div class="top-bar">
-        <span  @click="toggleMine">
-            <i-icon type="mine" size="44" color="#fff"/>
+        <span  @click="toggleMine" class="top-bar__icon">
+            <image src="/static/images/icon/user.png" class="top-bar__mine"/>
         </span>
     
         <span class="top-bar__title">{{currentMark}}</span>
 
-        <span class="top-bar__sub-menu">
-            <span @click="handleSubMenuClick">
-                <i-icon type="other" size="44" color="#fff" />
-            </span>
+        <span @click="handleSubMenuClick" class="top-bar__icon">
+            <image src="/static/images/icon/dingyueku.png" class="top-bar__sub-menu"/>
         </span>
       </div>
 
@@ -24,15 +22,15 @@
     <!-- 地图主体和卡片列表 -->
     <div class="main-map">
         <campus-map @markClick="handleMarkClick" :mapMarks="markPoints"/>
-        <home-card-drawer :list="currentCardsList" place="信息化中心"
-            notice="mpvue v-for循环特别卡" :clickId="clickId"/>
+        <home-card-drawer :list="currentCardsList"
+            notice="实时消息通知功能正在开发中，敬请期待～" :clickId="clickId"/>
         <!-- <home-card :detail="[111,222,333]" title="23423"/>-->
     </div>
   </div>
 </template>
 
 <script lang="js">
-import { mapState, mapActions, mapGetters } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 import HomeCard from '@/components/homeCard/HomeCard';
 import AsideMenu from '@/components/asideMenu/AsideMenu';
 import HomeCardDrawer from '@/components/homeCardDrawer/homeCardDrawer';
@@ -44,24 +42,7 @@ export default {
             currentMark: 'BUPT',
             currentCardsList: [],
             showMine: false,
-            clickId: 0,
-            mockData: {
-                homeCardDrawer: [
-                    {
-                        title: 'aaaaa',
-                        detail: [111, 222, 333]
-                    }, {
-                        title: 'bbbbb',
-                        detail: [111, 222, 333]
-                    }, {
-                        title: 'ccccc',
-                        detail: [111, 222, 333]
-                    }, {
-                        title: 'dddddd',
-                        detail: [111, 222, 333]
-                    }
-                ]
-            }
+            clickId: 0
         };
     },
 
@@ -82,9 +63,6 @@ export default {
         })
     },
     methods: {
-        ...mapActions([
-            'getMap'
-        ]),
         toggleMine (e) {
             this.showMine = !this.showMine;
         },
@@ -128,13 +106,23 @@ export default {
   display: flex;
   justify-content: space-between;
 }
+.top-bar__icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.top-bar__mine {
+    height: 24px;
+    width: 22px;
+}
 .top-bar__title {
   height: 100%;
   text-align: center;
   line-height: 44px;
 }
 .top-bar__sub-menu {
-  text-align: right;
+  width: 27px;
+  height: 21px;
 }
 .mine-container {
   width:65vw;
