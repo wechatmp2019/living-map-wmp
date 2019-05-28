@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="home-card-operation">
-            <card-operation :type="type" />
+            <card-operation :type="type" :cardId="cardId" :markPointId="cardData.markpoint_id"/>
         </div>
     </div>
 </template>
@@ -45,6 +45,14 @@ export default {
         detail: {
             type: Array,
             default: []
+        },
+        cardId: {
+            type: Number,
+            require: true
+        },
+        cardData: {
+            type: Object,
+            require: true
         }
     },
     computed: {

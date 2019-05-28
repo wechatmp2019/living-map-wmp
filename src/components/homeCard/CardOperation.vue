@@ -12,11 +12,13 @@
         </div>
         <div v-else>
             <div class="card-operation-icon">
-                <i-icon type="service_fill" size="36" v-if="hasSaved"/>
-                <i-icon type="service" size="36" v-else/>
+                <!-- <i-icon type="service_fill" size="36" v-if="hasSaved"/>
+                <i-icon type="service" size="36" v-else/> -->
+                <image src="/static/images/icon/mycards.png" class="menu__icon" v-if="hasSaved"/>
+                <image src="/static/images/icon/joincard.png" class="menu__icon" v-else/>
             </div>
             <div class="card-operation-status">
-                <text v-if="hasSaved">已加入卡包</text>
+                <text v-if="hasSaved">已加入</text>
                 <text v-else>加入卡包</text>
             </div>
         </div>
@@ -25,25 +27,55 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
+
 export default {
     name: 'card-operation',
     data () {
         return {
-            hasSaved: false
         };
     },
     props: {
         type: {
             type: String,
             default: 'tip'
+        },
+        cardId: {
+            type: Number,
+            require: true
+        },
+        markPointId: {
+            type: Number,
+            require: true
         }
     },
     computed: {
+        ...mapGetters({
+            getCard: 'getCardByCardAndMarkId'
+        }),
+        hasSaved () {
+            return this.getCard(this.cardId, this.markPointId).collected;
+        }
     },
     methods: {
+        ...mapActions([
+            'collectcCard',
+            'cancleCollectCard'
+        ]),
         handleCardOperation (e) {
             e.stopPropagation();
-            this.hasSaved = !this.hasSaved;
+            if (this.hasSaved) {
+                this.cancleCollectCard({
+                    cardId: this.cardId,
+                    markId: this.markPointId
+                });
+            } else {
+                this.collectcCard({
+                    cardId: this.cardId,
+                    markId: this.markPointId
+                });
+            }
+
             return false;
         }
     }
@@ -57,6 +89,10 @@ export default {
     overflow: hidden;
     background: #fff;
     border: 1rpx solid #dddee1;
+}
+.menu__icon {
+    height: 24px;
+    width: 22px;
 }
 
 </style>

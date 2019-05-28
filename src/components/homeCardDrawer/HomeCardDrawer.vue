@@ -14,8 +14,8 @@
                 </div>
                 <div class="home-card-list" >
                     <div class="list__item" v-for="(item, index) in list" :key="item.id+index">
-                        <home-card :title="item.title"
-                            :detail="JSON.parse(item.detail)"/>
+                        <home-card :title="item.title" :cardId="item.id"
+                            :detail="JSON.parse(item.detail)" :cardData="item"/>
                     </div>
                 </div>
             </div>
@@ -40,10 +40,6 @@ export default {
         };
     },
     props: {
-        place: {
-            type: String,
-            default: ''
-        },
         notice: {
             type: String,
             default: ''
