@@ -133,6 +133,6 @@ export default {
     transition: opacity 0.5s linear;
 }
 .notice-bar, .list__item {
-    padding-bottom: 8px;
+    padding-bottom: 4px;
 }
 </style>
