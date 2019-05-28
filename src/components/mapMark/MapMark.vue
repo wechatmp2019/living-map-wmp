@@ -1,8 +1,7 @@
 <template>
     <div class="map-mark" :style="style" @click="clickHandler">
         <!-- <i-icon :size="size" :custom="icon" :color="color"/> -->
-        <image :src="icon" width="50px" height="50px" mode="aspectFit"/>
-        <div>{{place}}</div>
+        <image :src="icon" class="mark-image" mode="aspectFit"/>
     </div>
 </template>
 
@@ -53,6 +52,10 @@ export default {
 <style scoped>
 .map-mark {
     position: absolute;
+}
+.mark-image {
+    width: 50px;
+    height: 50px;
 }
 
 </style>
