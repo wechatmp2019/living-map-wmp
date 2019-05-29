@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/index/main",
-    "pages/counter/main",
     "pages/contactus/main",
     "pages/mycard/main",
     "pages/mysubscription/main",
@@ -12,8 +11,7 @@
     "navigationBarBackgroundColor": "#B2D0EA",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black",
-    "enablePullDownRefresh": false
-    
+    "enablePullDownRefresh": true 
   },
   "usingComponents": {
     "cu-custom": "../static/colorui/components/cu-custom"
