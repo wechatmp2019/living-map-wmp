@@ -14,7 +14,7 @@
             <div class="card-operation-icon">
                 <!-- <i-icon type="service_fill" size="36" v-if="hasSaved"/>
                 <i-icon type="service" size="36" v-else/> -->
-                <image src="/static/images/icon/mycards.png" class="menu__icon" v-if="hasSaved"/>
+                <image src="/static/images/icon/joinedcard.png" class="menu__icon" v-if="hasSaved"/>
                 <image src="/static/images/icon/joincard.png" class="menu__icon" v-else/>
             </div>
             <div class="card-operation-status">
@@ -93,6 +93,10 @@ export default {
 .menu__icon {
     height: 24px;
     width: 22px;
+}
+.card-operation-status {
+    font-size: 12px;
+    color: #999;
 }
 
 </style>

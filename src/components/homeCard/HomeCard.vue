@@ -72,6 +72,9 @@ export default {
     border: 1rpx solid #dddee1;
     padding: 8px 16px;
 }
+.home-card-content {
+    width: 80%;
+}
 .home-card-header {
     display: flex;
     padding: 6px 16px;
@@ -79,18 +82,10 @@ export default {
 }
 .home-card-header-content {
     flex: 1;
-    text-align: left
-}
-.home-card-header-thumb {
-    display: inline-block;
-    width: 64px;
-    height: 64px;
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    overflow: hidden;
-    background-size: cover;
-    vertical-align: middle
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
 }
 .home-card-header-title {
     display: inline-block;
@@ -104,6 +99,11 @@ export default {
     color: #495060;
     font-size: 14px
 }
+.home-card-body__item {
+    font-size: 12px;
+    color:#666;
+    padding-bottom: 6px;
+}
 .home-card-footer {
     position: relative;
     padding: 6px 16px;
@@ -111,6 +111,8 @@ export default {
     font-size: 12px
 }
 .home-card-operation {
+    width: 20%;
+    text-align:center;
     align-self: center;
 }
 </style>

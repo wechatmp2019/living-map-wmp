@@ -68,6 +68,10 @@ export default {
     align-items: center;
     padding: 24px 0 36px;
 }
+.profile__area {
+    font-size: 12px;
+    color: #666;
+}
 .profile__avatar {
     width: 64px;
     height: 64px;
@@ -78,11 +82,14 @@ export default {
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); 
 }
 .profile__nickname {
-    padding: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    padding: 6px 0 4px;
 }
 .menu__icon {
-    height: 24px;
-    width: 22px;
+    height: 20px;
+    width: 18px;
 }
 
 
