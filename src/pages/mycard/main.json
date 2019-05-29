@@ -3,13 +3,9 @@
     "usingComponents": {
         "i-button": "/static/iview/button/index",
         "i-icon": "/static/iview/icon/index",
-        "i-drawer": "/static/iview/drawer/index",
-        "i-cell-group": "/static/iview/cell-group/index",
-        "i-cell": "/static/iview/cell/index",
-        "i-notice-bar": "/static/iview/notice-bar/index",
-        "i-collapse": "/static/iview/collapse/index",
-        "i-collapse-item": "/static/iview/collapse-item/index",
-        "i-panel": "/static/iview/panel/index"
-
+        "i-tag": "/static/iview/tag/index",
+        "i-swipeout": "/static/iview/swipeout/index",
+        "i-action-sheet": "/static/iview/action-sheet/index",
+        "i-message": "/static/iview/message/index"
     }
 }
