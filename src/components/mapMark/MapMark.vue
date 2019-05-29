@@ -1,7 +1,7 @@
 <template>
     <div class="map-mark" :style="style" @click="clickHandler">
         <!-- <i-icon :size="size" :custom="icon" :color="color"/> -->
-        <image :src="icon" class="mark-image" mode="aspectFit"/>
+        <image :src="icon" :class="imageSize" mode="aspectFit"/>
     </div>
 </template>
 
@@ -42,6 +42,31 @@ export default {
                 left: this.position[0] + 'vw',
                 top: this.position[1] + 'vh'
             });
+        },
+        imageSize () {
+            switch (this.place) {
+            case '明光楼':
+            case '校医院':
+            case '漫咖啡':
+            case '宿舍区':
+                return 'mark-image--big';
+            case '校车点':
+            case '保卫处':
+            case '浴室':
+            case '食堂':
+            case '就业指导中心':
+                return 'mark-image--small';
+            case '学十':
+            case '图书馆':
+            case '科学会堂':
+                return 'mark-image--medium';
+            case '主楼':
+                return 'zhulou';
+            case '运动场地':
+                return 'caochang';
+            default:
+                return 'mark-image';
+            }
         }
     },
     methods: {
@@ -61,12 +86,20 @@ export default {
     width: 110px;
     height: 110px;
 }
+.mark-image--medium {
+    width: 90px;
+    height: 90px;
+}
+.mark-image--small {
+    width: 40px;
+    height: 40px;
+}
 .zhulou {
     width: 75px;
     height: 75px;
 }
-.tushuguan, .xueshi {
-    width: 90px;
-    height: 90px;
+.caochang {
+    width: 80px;
+    height: 80px;
 }
 </style>
