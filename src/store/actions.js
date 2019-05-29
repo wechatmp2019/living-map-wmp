@@ -54,6 +54,15 @@ const actions = {
             url: `/api/card/collection`
         });
         if (resData.success) {
+            payload.callback && payload.callback(resData.data);
+            // return resData.data;
+        }
+    },
+    getOneCard: async (context, payload) => {
+        const resData = await $http.get({
+            url: `/api/card/${payload.cardId}`
+        });
+        if (resData.success) {
             return resData.data;
         }
     }

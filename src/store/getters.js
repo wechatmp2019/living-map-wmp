@@ -18,8 +18,7 @@ const getters = {
         return state.cardsMap[id];
     },
     getCardByCardAndMarkId: (state, getters) => (cardId, markId) => {
-        const card = state.cardsMap[markId].find(card => card.id === cardId);
-        return card;
+        return state.cardsMap[markId].find(card => card.id === cardId);
     }
 };
 
