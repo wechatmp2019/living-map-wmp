@@ -3,7 +3,6 @@
         <div class="home-card-content">
             <div class="home-card-header">
                 <div class="home-card-header-content">
-                    <image class="home-card-header-thumb" :src="thumb" mode="aspectFit" v-if="thumb" />
                     {{ title }}
                 </div>
             </div>
@@ -28,10 +27,6 @@ export default {
         CardOperation
     },
     props: {
-        thumb: {
-            type: String,
-            default: ''
-        },
         title: {
             type: String,
             default: ''
@@ -86,12 +81,6 @@ export default {
     font-size: 14px;
     font-weight: bold;
     color: #333;
-}
-.home-card-header-title {
-    display: inline-block;
-    vertical-align: middle;
-    font-size: 14px;
-    color: #1c2438
 }
 .home-card-body {
     position: relative;

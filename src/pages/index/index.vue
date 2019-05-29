@@ -45,7 +45,6 @@ export default {
             clickId: 0
         };
     },
-
     components: {
         HomeCard,
         AsideMenu,
@@ -83,6 +82,9 @@ export default {
             } else {
                 this.currentCardsList = [];
             }
+        },
+        handleSubMenuClick () {
+            // wx.navigateTo();
         }
     },
 

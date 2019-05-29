@@ -6,13 +6,9 @@
         "i-drawer": "/static/iview/drawer/index",
         "i-cell-group": "/static/iview/cell-group/index",
         "i-cell": "/static/iview/cell/index",
-        "i-notice-bar": "/static/iview/notice-bar/index",
-        "i-collapse": "/static/iview/collapse/index",
-        "i-collapse-item": "/static/iview/collapse-item/index",
         "i-panel": "/static/iview/panel/index",
         "i-radio-group": "/static/iview/radio-group/index",
         "i-radio": "/static/iview/radio/index",
         "i-input": "/static/iview/input/index"
-
     }
 }
