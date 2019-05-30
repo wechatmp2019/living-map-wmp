@@ -32,7 +32,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
@@ -44,6 +44,13 @@
 					"id": -1,
 					"name": "我的卡包",
 					"pathName": "pages/mycard/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "联系我们",
+					"pathName": "pages/contactus/main",
 					"scene": null
 				}
 			]
