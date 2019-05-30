@@ -131,6 +131,11 @@ export default {
     font-size: 14px;
     padding: 8px 16px;
     position: relative;
+    background-image: url('https://beiyouxianyu.cn/image/bupt/cardbg/card_tsg.png');
+    background-repeat:no-repeat; 
+    background-size:88%;
+    background-position-y:-85rpx;
+    background-position-x:88rpx;
 }
 .my-card-tag {
     position:absolute;
