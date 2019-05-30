@@ -13,9 +13,9 @@
                     </i-notice-bar>
                 </div>
                 <div class="home-card-list" >
-                    <div class="list__item" v-for="(item, index) in list" :key="item.id+index">
-                        <home-card :title="item.title" :cardId="item.id"
-                            :detail="JSON.parse(item.detail)" :cardData="item"/>
+                    <div class="list__item" v-for="(homecard, hIndex) in list" :key="homecard.id+hIndex">
+                        <home-card :title="homecard.title" :cardId="homecard.id"
+                            :detail="JSON.parse(homecard.detail)" :cardData="homecard"/>
                     </div>
                 </div>
             </div>
@@ -129,8 +129,7 @@ export default {
     padding: 0 8px;
     background:rgb(255,255,255,0);
     width: 96%;
-    /* transition: all 0.3s linear; */
-    transition: opacity 0.5s linear;
+    transition: opacity 0.2s linear;
 }
 .notice-bar, .list__item {
     padding-bottom: 4px;

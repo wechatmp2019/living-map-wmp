@@ -7,8 +7,8 @@
                 </div>
             </div>
             <div class="home-card-body">
-                <div class="home-card-body__item" v-for="(item, index) in detail" :key="index">
-                    {{item}}
+                <div class="home-card-body__item" v-for="(tip, tIndex) in detail" :key="tIndex">
+                    {{tip}}
                 </div>
             </div>
         </div>
