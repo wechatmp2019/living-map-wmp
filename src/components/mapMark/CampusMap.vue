@@ -1,7 +1,7 @@
 <template>
     <div class="campus-map" >
         <scroll-view scroll-y :enable-back-to-top="true" class="map-scroll-container">
-            <image :src="currentMap ? currentMap.imageUrl : loadingUrl" mode="widthFix" class="campus-map__img"/>
+            <image :src="localMapImg" mode="widthFix" class="campus-map__img"/>
             <map-mark v-for="(item,index) in mapMarks" :key="item.id+index" 
                 :icon="item.image_url" :place="item.name"
                 :position="[item.latitude, item.longitude]" 
@@ -21,6 +21,7 @@ export default {
     },
     data () {
         return {
+            localMapImg: '/static/images/map/xitucheng.jpg',
             loadingUrl: 'https://image.weilanwl.com/gif/loading-white.gif'
         };
     },
