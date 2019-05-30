@@ -24,7 +24,6 @@
         <campus-map @markClick="handleMarkClick" :mapMarks="markPoints"/>
         <home-card-drawer :list="currentCardsList"
             notice="实时消息通知功能正在开发中，敬请期待～" :clickId="clickId"/>
-        <!-- <home-card :detail="[111,222,333]" title="23423"/>-->
     </div>
   </div>
 </template>
@@ -84,7 +83,15 @@ export default {
             }
         },
         handleSubMenuClick () {
-            // wx.navigateTo();
+            wx.navigateTo({
+                url: '/pages/mycard/main'
+            });
+        },
+        onShareAppMessage () {
+            return {
+                title: '校园里有你不知道的信息吗？快来看看吧~',
+                path: '/pages/index/main'
+            };
         }
     },
 

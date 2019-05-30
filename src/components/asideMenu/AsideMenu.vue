@@ -18,7 +18,7 @@
             <i-cell title="我的卡包" is-link :url="naviUrl.myCards">
                 <image slot="icon" src="/static/images/icon/mycards.png" class="menu__icon"/>
             </i-cell>
-            <i-cell title="我的订阅" is-link :url="naviUrl.mySubscription">
+            <i-cell title="我的订阅" is-link @click="handleSubscribeClick">
                 <image slot="icon" src="/static/images/icon/mysubscribe.png" class="menu__icon"/>
             </i-cell>
             <i-cell title="问题反馈" is-link :url="naviUrl.feedback">
@@ -54,6 +54,12 @@ export default {
     computed: {
     },
     methods: {
+        handleSubscribeClick () {
+            wx.showToast({
+                title: '功能正在开发中~',
+                icon: 'loading'
+            });
+        }
     }
 };
 </script>
