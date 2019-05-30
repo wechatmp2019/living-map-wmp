@@ -99,7 +99,6 @@ export default {
         resetCardListHeight () {
             wx.createSelectorQuery().select('#cardList').boundingClientRect().exec((rect) => {
                 this.curListHeight = rect[0].height;
-                console.log(this.curListHeight);
             });
         },
         hideCardsList () {
