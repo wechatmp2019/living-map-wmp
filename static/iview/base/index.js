@@ -11,7 +11,7 @@ function getCtx (selector) {
     return componentCtx;
 }
 
-function Toast(options) {
+function Toast (options) {
     const { selector = '#toast' } = options;
     const ctx = getCtx(selector);
 
@@ -24,7 +24,7 @@ Toast.hide = function (selector = '#toast') {
     ctx.handleHide();
 };
 
-function Message(options) {
+function Message (options) {
     const { selector = '#message' } = options;
     const ctx = getCtx(selector);
 

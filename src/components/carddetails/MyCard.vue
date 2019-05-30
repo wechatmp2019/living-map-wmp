@@ -1,9 +1,8 @@
 <template>
     <div class="my-card-container">
-        <i-action-sheet :visible="asVisible" :actions="actions2" show-cancel @cancel="handleCancelAs" @click="handleClickItem2" :mask-closable="true">
+        <i-action-sheet :visible="asVisible" :actions="actions" show-cancel @cancel.stop="handleCancelAs" @asclick="handleClickAction" :mask-closable="true">
             <view slot="header" style="padding: 16px">
-                <view style="color: #444;font-size: 16px">确定吗？</view>
-                <text>删除后无法恢复哦</text>
+                <view style="color: #333;font-size: 16px">确定要取消收藏吗？</view>
             </view>
         </i-action-sheet>
         <i-swipeout :operateWidth="180" :unclosable="true" :toggle="toggleSwipeout">
@@ -16,16 +15,16 @@
                         </div>
                     </div>
                     <div class="my-card-body">
-                        <div class="my-card-body__item" v-for="(item, index) in detail" :key="index">
-                            {{item}}
+                        <div class="my-card-body__item" v-for="(mtip, mtIndex) in detail" :key="mtIndex">
+                            {{mtip}}
                         </div>
                     </div>
                 </div>
             </div>
             <div slot="button" class="i-swipeout-demo-button-group" style="background:#2db7f5;">
-                <div class="i-swipeout-demo-button" style="width:60px" @click="openActionSheet"><i-icon size="32" type="like_fill"></i-icon></div>
-                <div class="i-swipeout-demo-button" style="width:60px" @click="openActionSheet"><i-icon size="32" type="share_fill"></i-icon></div>
-                <div class="i-swipeout-demo-button" style="width:60px" @click="openActionSheet"><i-icon size="32" type="delete_fill"></i-icon></div>
+                <div class="i-swipeout-demo-button" style="width:60px" @click="openActionSheet"><i-icon size="32" type="label_fill"></i-icon></div>
+                <button open-type="share" class="i-swipeout-demo-button" style="width:60px"><i-icon size="32" type="share_fill"></i-icon></button>
+                <div class="i-swipeout-demo-button" style="width:60px" @click="handleUndoClick"><i-icon size="32" type="undo"></i-icon></div>
             </div>
         </i-swipeout>
     </div>
@@ -33,6 +32,8 @@
 
 <script>
 import { mapActions } from 'vuex';
+const { $Message } = require('../../../static/iview/base/index');
+
 export default {
     name: 'my-card',
     data () {
@@ -40,27 +41,10 @@ export default {
         return {
             asVisible: false,
             toggleSwipeout: false,
-            actions2: [
-                {
-                    name: '删除',
-                    color: '#ed3f14'
-                }
-            ],
             actions: [
                 {
-                    name: '喜欢',
-                    color: '#fff',
-                    fontsize: '20',
-                    width: 100,
-                    icon: 'like',
-                    background: '#ed3f14'
-                },
-                {
-                    name: '返回',
-                    width: 100,
-                    color: '#80848f',
-                    fontsize: '20',
-                    icon: 'undo'
+                    name: '取消收藏',
+                    color: '#ed3f14'
                 }
             ]
         };
@@ -97,27 +81,43 @@ export default {
         ...mapActions([
             'cancleCollectCard'
         ]),
-        handleCancelAs () {
-            this.closeActionSheet();
+        toggleSwipeShow () {
             this.toggleSwipeout = !this.toggleSwipeout;
         },
-        handleClickItem2 () {
-            const action = [...this.actions2];
+        handleCancelAs () {
+            this.closeActionSheet();
+            this.toggleSwipeShow();
+        },
+        handleClickAction (e, index) {
+            const action = [...this.actions];
             action[0].loading = true;
-            this.actions2 = action;
+            this.actions = action;
 
-            setTimeout(() => {
-                action[0].loading = false;
-                this.closeActionSheet();
-                this.actions2 = action;
-                this.toggleSwipeout = !this.toggleSwipeout;
-            }, 2000);
+            // 发送请求
+            this.cancleCollectCard({
+                markId: this.cardData.markpoint_id,
+                cardId: this.cardId,
+                callback: () => {
+                    action[0].loading = false;
+                    this.actions = action;
+                    this.handleCancelAs();
+
+                    $Message({
+                        content: '取消收藏成功！',
+                        type: 'success'
+                    });
+                    wx.startPullDownRefresh();
+                }
+            });
         },
         openActionSheet () {
             this.asVisible = true;
         },
         closeActionSheet () {
             this.asVisible = false;
+        },
+        handleUndoClick () {
+            this.toggleSwipeShow();
         }
     }
 };

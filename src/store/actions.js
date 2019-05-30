@@ -3,7 +3,7 @@
  * @Author: chenjiaxi
  * @Date: 2019-05-15 22:06:14
  * @Last Modified by: chenjiaxi
- * @Last Modified time: 2019-05-29 00:45:21
+ * @Last Modified time: 2019-05-30 09:13:41
  */
 
 import $http from '@/http/request';
@@ -46,6 +46,7 @@ const actions = {
                 cardId: payload.cardId,
                 collected: false
             });
+            payload.callback && payload.callback();
         }
     },
     getUserCards: async (context, payload) => {
@@ -55,7 +56,6 @@ const actions = {
         });
         if (resData.success) {
             payload.callback && payload.callback(resData.data);
-            // return resData.data;
         }
     },
     getOneCard: async (context, payload) => {
