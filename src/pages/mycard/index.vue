@@ -72,7 +72,8 @@ export default {
     onShareAppMessage () {
         return {
             title: '校园里有你不知道的信息吗？快来看看吧~',
-            path: '/pages/index/main'
+            path: '/pages/index/main',
+            imageUrl: 'https://beiyouxianyu.cn/image/Logoshare.jpg'
         };
     }
 };

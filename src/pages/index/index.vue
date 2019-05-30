@@ -38,7 +38,7 @@ import CampusMap from '@/components/mapMark/CampusMap.vue';
 export default {
     data () {
         return {
-            currentMark: 'BUPT',
+            currentMark: '北京邮电大学',
             currentCardsList: [],
             showMine: false,
             clickId: 0
@@ -90,7 +90,8 @@ export default {
         onShareAppMessage () {
             return {
                 title: '校园里有你不知道的信息吗？快来看看吧~',
-                path: '/pages/index/main'
+                path: '/pages/index/main',
+                imageUrl: 'https://beiyouxianyu.cn/image/Logoshare.jpg'
             };
         }
     },

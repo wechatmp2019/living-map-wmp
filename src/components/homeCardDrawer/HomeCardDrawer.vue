@@ -75,6 +75,8 @@ export default {
                     this.showCardsList();
                 } else {
                     this.hideCardsList();
+                    // 提示用户没有数据
+                    this.$toast('暂无数据哦～请督促我们增添数据');
                 }
             }, 100);
         }
